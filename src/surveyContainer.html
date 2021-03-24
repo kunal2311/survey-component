@@ -1,0 +1,48 @@
+<template>
+  <template if:true={showSpinner}>
+    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+  </template>
+
+
+
+  <template if:true={pageData.showWelcomePage}>
+    <c-survey-welcome-page></c-survey-welcome-page>
+  </template>
+  <template if:true={pageData.showPresurveyPage}>
+    <c-survey-presurvey-page></c-survey-presurvey-page>
+  </template>
+  <template if:true={pageData.showQuestionPage}>
+    <c-survey-question-page></c-survey-question-page>
+  </template>
+  <template if:true={pageData.showThankyouPage}>
+    <c-survey-thankyou-page></c-survey-thankyou-page>
+  </template>
+
+
+  <template if:true={showPrevious}>
+    <lightning-button variant="neutral" title="Previous" class="slds-float_left" label="Previous"
+      icon-name="utility:chevronleft" icon-position="left" onclick={handleClick}>
+    </lightning-button>
+  </template>
+
+  <lightning-progress-indicator current-step={progressStep} type="base" variant="base">
+    <template for:each={progressPages} for:item="progressPage">
+      <lightning-progress-step label={progressPage.pageName} value={progressPage.pageId} key={progressPage.pageId}>
+      </lightning-progress-step>
+    </template>
+  </lightning-progress-indicator>
+
+
+  <template if:true={showNext}>
+    <lightning-button variant="neutral" title="Next" class="slds-float_right" label="Next"
+      icon-name="utility:chevronright" icon-position="right" onclick={handleClick}>
+    </lightning-button>
+  </template>
+
+
+
+
+
+
+
+</template>

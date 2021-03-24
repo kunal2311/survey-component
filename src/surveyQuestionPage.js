@@ -3,7 +3,7 @@ import { LightningElement } from "lwc";
 /**
  * Show an item
  */
-export default class SurveyQuestionList extends LightningElement {
+export default class SurveyQuestionPage extends LightningElement {
   
 
   questionList = [{
@@ -48,4 +48,6 @@ export default class SurveyQuestionList extends LightningElement {
     recordId : '6',
     displayQuestion : true
   }];
+
+  //test comment
 }
