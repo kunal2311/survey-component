@@ -1,0 +1,37 @@
+<template>
+  <lightning-card title="Suvery Question List" style="width: 100%;">
+
+    <lightning-layout>
+      <lightning-layout-item padding="around-small" size="12">
+        <ul class="slds-has-dividers_around-space">
+          <li class="slds-item">
+            <c-survey-question question-text="Hello this is a Question?" answer-type='radiobutton'
+              option-values={options1}>
+            </c-survey-question>
+          </li>
+          <li class="slds-item">
+            <c-survey-question question-text="Hello this is a Question?" answer-type='radio' option-values={options2}>
+            </c-survey-question>
+          </li>
+          <li class="slds-item">
+            <c-survey-question question-text="Hello this is a Question?" answer-type='dropdown'
+              option-values={options3}>
+            </c-survey-question>
+          </li>
+          <li class="slds-item">
+            <c-survey-question question-text="Hello this is a Question?" answer-type='date'>
+            </c-survey-question>
+          </li>
+          <li class="slds-item">
+            <c-survey-question question-text="Hello this is a Question?" answer-type='textbox'>
+            </c-survey-question>
+          </li>
+          <li class="slds-item">
+            <c-survey-question question-text="Hello this is a Question?" answer-type='textarea'>
+            </c-survey-question>
+          </li>
+        </ul>
+      </lightning-layout-item>
+    </lightning-layout>
+  </lightning-card>
+</template>
