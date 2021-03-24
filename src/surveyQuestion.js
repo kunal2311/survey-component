@@ -10,6 +10,7 @@ export default class SurveyQuestion extends LightningElement {
     showTextBox = false;
     showTextArea = false; 
     showRadio = false;
+    
 
     optionsToReturn = [];
     
@@ -17,7 +18,6 @@ export default class SurveyQuestion extends LightningElement {
     @api answerType = "";
     @api selectedValue = "";
     @api optionValues = [];
-    
     
 
     get options() {
