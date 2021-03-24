@@ -1,4 +1,4 @@
-import { LightningElement } from "lwc";
+import { LightningElement, track } from "lwc";
 
 export default class SurveyContainer extends LightningElement {
   showSpinner = false;
@@ -10,6 +10,8 @@ export default class SurveyContainer extends LightningElement {
   pageData;
   progressStep;
   progressPages = [];
+
+  @track selectedValue;
 
   questionList = [{
     questionText : 'This is first question',
@@ -146,5 +148,18 @@ export default class SurveyContainer extends LightningElement {
       this.showNext = false;
     }
     this.showSpinner = false;
+  }
+  
+  //event listener to handle the event fired from child questionPage component
+  constructor() {
+      super();   
+      this.template.addEventListener('parentselectedvalue', this.handleCustomEvent.bind(this));
+  }
+
+// handle the selected value
+    //selected value from the child surveyQuestionPage component 
+  handleCustomEvent(event) {
+      const textVal = event.detail;
+      this.selectedValue = textVal;
   }
 }
