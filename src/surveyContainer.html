@@ -12,7 +12,7 @@
     <c-survey-presurvey-page></c-survey-presurvey-page>
   </template>
   <template if:true={pageData.showQuestionPage}>
-    <c-survey-question-page></c-survey-question-page>
+    <c-survey-question-page question-data-list={pageData.questionList}></c-survey-question-page>
   </template>
   <template if:true={pageData.showThankyouPage}>
     <c-survey-thankyou-page></c-survey-thankyou-page>

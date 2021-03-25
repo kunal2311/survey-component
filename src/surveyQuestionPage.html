@@ -4,7 +4,7 @@
     <lightning-layout>
       <lightning-layout-item padding="around-small" size="12">
         <ul class="slds-has-dividers_around-space">
-          <template for:each={questionList} for:item="item">
+          <template for:each={questionDataList} for:item="item">
             <template if:true={item.displayQuestion}>
               <li class="slds-item" key={item.recordId}>
                 <c-survey-question question-text={item.questionText} answer-type={item.answerType}

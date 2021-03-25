@@ -19,6 +19,7 @@ export default class SurveyQuestion extends LightningElement {
     @api selectedValue = "";
     @api optionValues = [];
     
+    
 
     get options() {
         console.log('options: '+this.optionValues);

@@ -12,48 +12,87 @@ export default class SurveyContainer extends LightningElement {
   progressPages = [];
 
   @track selectedValue;
-
-  questionList = [{
+  @track
+  questionList1 = [{
     questionText : 'This is first question',
     answerType : 'radiobutton',
     answerOptions : ['1','2','3','4','5','6','7','8','9','10'],
     recordId : '1',
-    displayQuestion : true
+    displayQuestion : true,
+    selectedAnswer : ''
   },
   {
     questionText : 'This is second question',
     answerType : 'dropdown',
     answerOptions : ['Yes','No','Not Sure'],
     recordId : '2',
-    displayQuestion : true
+    displayQuestion : true,
+    selectedAnswer : ''
   },
   {
     questionText : 'This is third question',
     answerType : 'radio',
     answerOptions : ['Yes','No'],
     recordId : '3',
-    displayQuestion : true
+    displayQuestion : true,
+    selectedAnswer : ''
   },
   {
     questionText : 'This is fourth question',
     answerType : 'date',
     answerOptions : ['1','2','3','4','5','6','7','8','9','10'],
     recordId : '4',
-    displayQuestion : true
+    displayQuestion : true,
+    selectedAnswer : ''
   },
   {
     questionText : 'This is fifth question',
     answerType : 'textbox',
     answerOptions : ['1','2','3','4','5','6','7','8','9','10'],
     recordId : '5',
-    displayQuestion : true
+    displayQuestion : true,
+    selectedAnswer : ''
   },
   {
     questionText : 'This is sixth question',
     answerType : 'textarea',
     answerOptions : ['1','2','3','4','5','6','7','8','9','10'],
     recordId : '6',
-    displayQuestion : true
+    displayQuestion : true,
+    selectedAnswer : ''
+  }];
+@track
+  questionList2 = [{
+    questionText : 'This is seventh question',
+    answerType : 'radiobutton',
+    answerOptions : ['1','2','3','4','5','6','7','8','9','10'],
+    recordId : '1',
+    displayQuestion : true,
+    selectedAnswer : ''
+  },
+  {
+    questionText : 'This is eight question',
+    answerType : 'dropdown',
+    answerOptions : ['Yes','No','Not Sure'],
+    recordId : '2',
+    displayQuestion : true,
+    selectedAnswer : ''
+  },
+  {
+    questionText : 'This is nineth question',
+    answerType : 'radio',
+    answerOptions : ['Yes','No'],
+    recordId : '3',
+    displayQuestion : true,
+    selectedAnswer : ''
+  },
+  {
+    questionText : 'This is tenth question',
+    answerType : 'date',
+    answerOptions : ['1','2','3','4','5','6','7','8','9','10'],
+    recordId : '4',
+    displayQuestion : true,
+    selectedAnswer : ''
   }];
 
   connectedCallback(){
@@ -74,16 +113,24 @@ export default class SurveyContainer extends LightningElement {
       showQuestionPage : false,
       showThankyouPage : false
     },{
-      pageType : 'Question Page',
+      pageType : 'Question Page 1',
       pageId : '3',
-      questionList : this.questionList,
+      questionList : this.questionList1,
+      showWelcomePage : false,
+      showPresurveyPage : false,
+      showQuestionPage : true,
+      showThankyouPage : false
+    },{
+      pageType : 'Question Page 2',
+      pageId : '4',
+      questionList : this.questionList2,
       showWelcomePage : false,
       showPresurveyPage : false,
       showQuestionPage : true,
       showThankyouPage : false
     },{
       pageType : 'Thank you Page',
-      pageId : '4',
+      pageId : '5',
       message : 'Thank You',
       showWelcomePage : false,
       showPresurveyPage : false,
@@ -122,6 +169,7 @@ export default class SurveyContainer extends LightningElement {
     console.log('Handle Previous');
     this.currentPageNo -= 1;
     this.progressStep -= 1;
+    console.log('currentPageNo: '+this.currentPageNo);
     this.preparePage();
   }
 
@@ -129,12 +177,14 @@ export default class SurveyContainer extends LightningElement {
     console.log('Handle Next');
     this.currentPageNo += 1;
     this.progressStep += 1;
+    console.log('currentPageNo: '+this.currentPageNo);
     this.preparePage();
   }
 
   preparePage(){
     console.log('preparePage');
     console.log('currentpage '+this.currentPageNo);
+    console.log();
     this.showSpinner = true;
     this.pageData = this.pageDataList[this.currentPageNo - 1];
     if(this.currentPageNo != 1){
@@ -142,7 +192,7 @@ export default class SurveyContainer extends LightningElement {
     } else{
       this.showPrevious = false;
     }
-    if(this.currentPageNo != 4){
+    if(this.currentPageNo != this.totalPages){
       this.showNext = true;
     } else{
       this.showNext = false;

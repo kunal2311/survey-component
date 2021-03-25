@@ -4,7 +4,7 @@
       <div class="slds-text-heading_medium" style="float: left;" contenteditable="false">{questionText}</div>
       <template if:true={showRadioButton}>
         <lightning-radio-group label="radio" options={options} type="button" variant="label-hidden"
-          onchange={handleChange}>
+          onchange={handleChange} value={selectedValue}>
         </lightning-radio-group>
       </template>
       <template if:true={showRadio}>
@@ -12,17 +12,19 @@
       </template>
       <template if:true={showComboBox}>
         <lightning-combobox label="" options={options} placeholder="Select an Option" dropdown-alignment="left"
-          variant="label-hidden" onchange={handleChange}></lightning-combobox>
+          variant="label-hidden" onchange={handleChange} value={selectedValue}></lightning-combobox>
       </template>
       <template if:true={showDate}>
-        <lightning-input label="date" type="date" value="" variant="label-hidden" onchange={handleChange}>
+        <lightning-input label="date" type="date" variant="label-hidden" onchange={handleChange} value={selectedValue}>
         </lightning-input>
       </template>
       <template if:true={showTextBox}>
-        <lightning-input label="textbox" type="text" variant="label-hidden" onchange={handleChange}></lightning-input>
+        <lightning-input label="textbox" type="text" variant="label-hidden" onchange={handleChange}
+          value={selectedValue}></lightning-input>
       </template>
       <template if:true={showTextArea}>
-        <lightning-textarea label="textarea" variant="label-hidden" onchange={handleChange}></lightning-textarea>
+        <lightning-textarea label="textarea" variant="label-hidden" onchange={handleChange} value={selectedValue}>
+        </lightning-textarea>
       </template>
     </lightning-layout-item>
   </lightning-layout>
