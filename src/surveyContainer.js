@@ -1,4 +1,4 @@
-import { LightningElement, track } from "lwc";
+import { LightningElement, track, api } from "lwc";
 
 export default class SurveyContainer extends LightningElement {
   showSpinner = false;
@@ -10,6 +10,8 @@ export default class SurveyContainer extends LightningElement {
   pageData;
   progressStep;
   progressPages = [];
+  @api
+  showStartConfirmation = false;
 
   @track selectedValue;
   @track
@@ -147,12 +149,22 @@ export default class SurveyContainer extends LightningElement {
   setPageToDisplay(){
     console.log('setPageToDisplay');
     this.totalPages = this.pageDataList.length;
-    this.currentPageNo = 1;
-    this.showPrevious = false;
-    this.showNext = true;
+    this.currentPageNo = 2;
+    
+    
     this.showSpinner = false;
     this.pageData = this.pageDataList[this.currentPageNo - 1];
+    if(this.currentPageNo != 1){
+      this.showPrevious = true;
+    } else{
+      this.showPrevious = false;
+    }
     
+    if(this.currentPageNo != this.totalPages){
+      this.showNext = true;
+    } else{
+      this.showNext = false;
+    }
   }
 
 
@@ -204,6 +216,8 @@ export default class SurveyContainer extends LightningElement {
   constructor() {
       super();   
       this.template.addEventListener('parentselectedvalue', this.handleCustomEvent.bind(this));
+      this.template.addEventListener('confirmationvalue', this.handleSurveyStartConfirmation.bind(this));
+      
   }
 
 // handle the selected value
@@ -211,5 +225,16 @@ export default class SurveyContainer extends LightningElement {
   handleCustomEvent(event) {
       const textVal = event.detail;
       this.selectedValue = textVal;
+  }
+    // handle the survey start confirmation
+    //selected confirmation value from the child confirmation component 
+  handleSurveyStartConfirmation(event) {
+      const textVal = event.detail;
+      this.showStartConfirmation = false;
+      if(textVal == 'Restart'){
+        this.currentPageNo = 1;
+        this.preparePage();
+      } 
+      console.log('conofirmation: '+textVal);
   }
 }

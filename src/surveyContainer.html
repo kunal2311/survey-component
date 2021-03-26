@@ -1,4 +1,7 @@
 <template>
+  <template if:true={showStartConfirmation}>
+    <c-survey-start-confirmation></c-survey-start-confirmation>
+  </template>
   <template if:true={showSpinner}>
     <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
   </template>

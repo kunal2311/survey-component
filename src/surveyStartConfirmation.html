@@ -1,0 +1,24 @@
+<template>
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Do you want to continue or restart?</h2>
+        <!--p class="slds-m-top_x-small">Do you want to continue or restart?</p-->
+      </header>
+      <!--div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <p>Do you want to continue or restart?</p>
+      </div-->
+      <footer class="slds-modal__footer">
+        <center>
+          <lightning-button label="Restart" title="Non-primary action" onclick={handleChangeToParent}
+            class="slds-m-left_x-small"></lightning-button>
+          <lightning-button variant="Brand" label="Continue" title="Primary action" onclick={handleChangeToParent}
+            class="slds-m-left_x-small"></lightning-button>
+        </center>
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
